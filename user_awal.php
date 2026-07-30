@@ -3,15 +3,15 @@ include 'config/koneksi.php';
 
 $nama = 'Adminstrator';
 $username = 'admin';
-$password = password_hash('admin123','PASSWORD_DEFAULT');
+$password = password_hash('admin123',PASSWORD_DEFAULT);
 $role = 'admin';
 
 $sql = "INSERT INTO tbl_userr(nama_lengkap,username,password,role)";
 $sql .= "VALUES ('$nama','$username','$password','$role')";
 
-if(mysqli_query($koneksi,$sql)) {
+if (mysqli_query($koneksi, $sql)) {
     echo 'User admin berhasil dibuat.Silahkan hapus file ini.';
-}else {
+} else {
     echo 'Gagal membuat user: '. mysqli_error($koneksi);
 }
 ?>
