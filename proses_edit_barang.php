@@ -1,6 +1,6 @@
 <?php
 session_start();
-include 'includes/cek_session';
+include 'include/cek_session';
 include 'config/koneksi.php';
 
 $id = $_POST['id_barang'];
