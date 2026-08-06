@@ -10,9 +10,12 @@ $data = mysqli_fetch_assoc($hasil);
 
 <!DOCTYPE html>
 <html>
-    <head><title> Edit Barang - Warung ABC</title></head>
+    <head>
+        <title> Edit Barang - Warung ABC</title>
+          <link rel="stylesheet" href="assets/css/style.css">
+</head>
     <body>
-        <h1>Edit Barang></h1>
+        <h1>Edit Barang </h1>
         <form action="proses_edit_barang.php"method="POST">
             <input type="hidden" name="id_barang" value="<?php echo $data['id_barang']; ?>">
             <table>

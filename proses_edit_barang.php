@@ -1,6 +1,6 @@
 <?php
 session_start();
-include 'include/cek_session';
+include 'include/cek_session.php';
 include 'config/koneksi.php';
 
 $id = $_POST['id_barang'];
@@ -19,8 +19,9 @@ if (mysqli_query($koneksi, $sql)) {
     $id_user = $_SESSION['id_user'];
     $waktu = date('Y-m-d H:i:s');
     $aktivitas = "edit barang: $nama";
-    $log = "INSERT INTO tbl_log (id_user,aktivitas,waktu) VALUES ($id_user,aktivitas,waktu) VALUES ('$id_user','$aktivitas','$waktu')";
-    mysqli_query($koneksi,$log);
+    $log = "INSERT INTO tbl_log (id_user,aktivitas,waktu) 
+    VALUES ('$id_user','$aktivitas','$waktu')";
+    mysqli_query($koneksi, $log);
 
     header('Location:data_barang.php');
     exit;

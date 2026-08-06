@@ -1,6 +1,5 @@
 <?php
-session_start();
-include 'includes/cek_session.php';
+include 'include/cek_session.php';
 include 'config/koneksi.php';
 
 if (empty($_SESSION['keranjang'])) {
@@ -18,9 +17,9 @@ foreach ($_SESSION['keranjang'] as $item) {
     $total += $item['subtotal'];
 }
 
-$sql = "INSERT INTO tbl_transaksi (no_transaksi,tanggal,id_kasir,id_pelanggan,total_bayar";
-$sql .= "VALUES ('$no_transaksi','$tanggal','id_kasir',NULL,'$total')";
-mysqli_query($koneksi,$sql);
+$sql = "INSERT INTO tbl_transaksi (no_transaksi,tanggal,id_kasir,id_pelanggan,total_bayar)";
+$sql .= "VALUES ('$no_transaksi','$tanggal','$id_kasir',NULL,'$total')";
+mysqli_query ($koneksi, $sql);
 
 $id_transaksi = mysqli_insert_id($koneksi);
 
@@ -28,7 +27,7 @@ foreach($_SESSION['keranjang'] as $id_barang => $item) {
     $jumlah = $item['jumlah'];
     $subtotal = $item['subtotal'];
 
-    $deail = "INSERT INTO tbl_detail_transaksi (id_transaksi,id_barang,jumlah,subtotal)";
+    $detail = "INSERT INTO tbl_detail_transaksi (id_transaksi,id_barang,jumlah,subtotal)";
     $detail .= "VALUES ('$id_transaksi','$id_barang','$jumlah','$subtotal')";
     mysqli_query($koneksi, $detail);
 

@@ -12,7 +12,7 @@ $jumlah = (int) $_POST['jumlah'];
 
 $sql = "SELECT * FROM tbl_barang WHERE id_barang = '$id_barang'";
 $hasil = mysqli_query($koneksi, $sql);
-$id_barang = mysqli_fetch_assoc($hasil);
+$barang = mysqli_fetch_assoc($hasil);
 
 if ($barang && $jumlah > 0 && $jumlah <= $barang['stok']) {
     $subtotal = $barang['harga_satuan'] * $jumlah;
